@@ -1,0 +1,1 @@
+const TERMINAL_ID = 'TERMINALID';
