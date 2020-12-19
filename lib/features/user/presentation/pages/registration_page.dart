@@ -120,7 +120,7 @@ class _RegistrationPageState extends State<RegistrationPage> {
                             isHiddenPassword
                                 ? Icons.visibility_off
                                 : Icons.visibility,
-                            color: Colors.purple,
+                            color: ColorConstant.PRIMARY_COLOR,
                           )),
                       focusedBorder: OutlineInputBorder(
                         borderSide: BorderSide(
@@ -132,7 +132,9 @@ class _RegistrationPageState extends State<RegistrationPage> {
                       ),
                       prefixIcon: Padding(
                         padding: const EdgeInsets.symmetric(
-                            horizontal: 10.0, vertical: 10.0),
+                          horizontal: 10.0,
+                          vertical: 10.0,
+                        ),
                         child: Icon(
                           Icons.lock,
                           color: Colors.grey[800],
