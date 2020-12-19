@@ -4,4 +4,5 @@ class ImageAssetConstants {
   static const MYCLIGLOGO = 'assets/images/mycliglogo.png';
   static const SPLASH_BLACK = 'assets/images/splash_black2.jpg';
   static const UPLOAD_ICON = 'assets/images/upload_icon.png';
+  static const AVATER_ICON = 'assets/images/avater.jpg';
 }

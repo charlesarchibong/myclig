@@ -156,7 +156,12 @@ class _LoginPageState extends State<LoginPage> {
                             height: 50.0,
                             child: FlatButton(
                               color: ColorConstant.PRIMARY_COLOR,
-                              onPressed: () {},
+                              onPressed: () {
+                                Navigator.pushNamed(
+                                  context,
+                                  EDIT_PROFILE_SCREEN,
+                                );
+                              },
                               child: Text(
                                 'Sign in',
                                 style: TextStyle(

@@ -46,30 +46,44 @@ class _VerifyRegistrationPageState extends State<VerifyRegistrationPage> {
                   Center(
                     child: Column(
                       children: [
-                        Image.asset(
-                          ImageAssetConstants.UPLOAD_ICON,
-                          height: 100,
-                          width: 100,
+                        Positioned(
+                          child: Center(
+                            child: Column(
+                              //mainAxisAlignment: MainAxisAlignment.start,
+                              children: [
+                                Padding(
+                                  padding: const EdgeInsets.only(top: 30),
+                                  child: Stack(
+                                    overflow: Overflow.visible,
+                                    children: [
+                                      CircleAvatar(
+                                        radius: 50,
+                                        backgroundImage: AssetImage(
+                                          ImageAssetConstants.AVATER_ICON,
+                                        ),
+                                      ),
+                                      Positioned(
+                                        width: 40,
+                                        top: 55,
+                                        left: 60,
+                                        child: FloatingActionButton(
+                                          elevation: 0,
+                                          child: Icon(Icons.camera_alt),
+                                          onPressed: () {},
+                                          backgroundColor: Colors.purple,
+                                        ),
+                                      )
+                                    ],
+                                  ),
+                                ),
+                                Card(
+                                  color: Colors.blue,
+                                  elevation: 8,
+                                ),
+                              ],
+                            ),
+                          ),
                         ),
-                        // Container(
-                        //   width: 100.0,
-                        //   height: 100.0,
-                        //   decoration: BoxDecoration(
-                        //     // color: ColorConstant.PRIMARY_COLOR,
-                        //     color: Colors.white,
-                        //     image: DecorationImage(
-                        //       image: AssetImage(
-                        //         ImageAssetConstants.UPLOAD_ICON,
-                        //       ),
-                        //       fit: BoxFit.scaleDown,
-                        //     ),
-                        //     borderRadius: BorderRadius.all(
-                        //       Radius.circular(
-                        //         75.0,
-                        //       ),
-                        //     ),
-                        //   ),
-                        // ),
                       ],
                     ),
                   ),
@@ -296,6 +310,7 @@ class _VerifyRegistrationPageState extends State<VerifyRegistrationPage> {
                       ),
                     ),
                   ),
+                  SizedBox(height: 60.0),
                 ],
               ),
             ),
