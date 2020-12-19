@@ -1,39 +1,6 @@
 class ImageAssetConstants {
-  static const SPLASH_SCREEN_IMAGE = 'assets/images/splash_screen.png';
-  static const FEATURE_COMING_SOON = 'assets/images/feature_coming_soon.png';
-  static const GREEN_TICK = 'assets/images/green_check.png';
-  static const RED_TICK = 'assets/images/red_check.png';
-  static const FIRST_CURVE = 'assets/images/1stcurve.png';
-  static const SECOND_CURVE = 'assets/images/2ndcurve.png';
-  static const KYC_CUP = 'assets/images/kyc_cup.png';
-  static const MAIL_ICON = 'assets/images/email-icon.png';
-  static const SECURITY_ICON = 'assets/images/security-icon.png';
-  static const SETTING_ICON = 'assets/images/setting-icon.png';
-  static const THIRD_CURVE = 'assets/images/3rdcurve.png';
-  static const FOURTH_CURVE = 'assets/images/4rdcurve.png';
-  static const LOAN_CHART = 'assets/images/loan.png';
-  static const SAVINGS = 'assets/images/saving.png';
-  static const APPRECIATION = 'assets/images/award_icon.png';
-  static const HANDS = 'assets/images/hand_emoji.png';
-  static const MTN = 'assets/images/icons/mtn.png';
-  static const GLO = 'assets/images/icons/glo.png';
-  static const AIRTEL = 'assets/images/icons/airtel.png';
-  static const ETISALT = 'assets/images/icons/9mobile.png';
-  static const DASHBOARD_SAVING = 'assets/images/icons/account.png';
-  static const DASHBOARD_AIRTIME = 'assets/images/icons/airtime.png';
-  static const DASHBOARD_BILLS = 'assets/images/icons/bills.png';
-  static const DASHBOARD_CABLE = 'assets/images/icons/cable.png';
-  static const DASHBOARD_ELECTRICITY = 'assets/images/icons/electricity.png';
-  static const DASHBOARD_FLIGHTS = 'assets/images/icons/flights.png';
-  static const DASHBOARD_GOVT = 'assets/images/icons/govt.png';
-  static const DASHBOARD_INTERNET = 'assets/images/icons/internet.png';
-  static const DASHBOARD_LOAN = 'assets/images/icons/loans.png';
-  static const DASHBOARD_SCHOOLS = 'assets/images/icons/schools.png';
-  static const DASHBOARD_TOLLS = 'assets/images/icons/tolls.png';
-  static const DASHBOARD_TRANSFER = 'assets/images/icons/transfer.png';
-  static const BOARD_ACTIVE_ICON = 'assets/images/icons/active_board_icon.png';
-  static const BOARD_INACTIVE_ICON =
-      'assets/images/icons/inactive_board_icon.png';
-  static const UPLOAD_FILE = 'assets/images/icons/upload.png';
-  static const KYCVERIFICATION = 'assets/images/kycVerification.png';
+  static const MYCLIGLOGO_SMALL = 'assets/images/mycliglogo_small.png';
+  static const MYCLIGLOGO_WHITE = 'assets/images/mycliglogo_white.png';
+  static const MYCLIGLOGO = 'assets/images/mycliglogo.png';
+  static const SPLASH_BLACK = 'assets/images/splash_black2.jpg';
 }
