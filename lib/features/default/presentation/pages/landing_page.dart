@@ -21,7 +21,7 @@ class _LandingPageState extends State<LandingPage> {
               fit: BoxFit.cover,
               colorFilter: ColorFilter.mode(
                 ColorConstant.PRIMARY_COLOR,
-                BlendMode.softLight,
+                BlendMode.modulate,
               ),
               image: AssetImage(
                 ImageAssetConstants.SPLASH_BLACK,
