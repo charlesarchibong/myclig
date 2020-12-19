@@ -4,6 +4,7 @@ import 'package:myclig/features/default/presentation/pages/landing_page.dart';
 import 'package:myclig/features/user/presentation/pages/forget_password_page.dart';
 import 'package:myclig/features/user/presentation/pages/login_page.dart';
 import 'package:myclig/features/user/presentation/pages/registration_page.dart';
+import 'package:myclig/features/user/presentation/pages/verify_registration_page.dart';
 
 class RouteGenerator {
   static Route<dynamic> onGenerateRoute(RouteSettings settings) {
@@ -15,6 +16,10 @@ class RouteGenerator {
       case LOGIN_SCREEN:
         return MaterialPageRoute(
           builder: (_) => LoginPage(),
+        );
+      case VERIFY_REGISTRATION_SCREEN:
+        return MaterialPageRoute(
+          builder: (_) => VerifyRegistrationPage(),
         );
       case REGISTRATION_SCREEN:
         return MaterialPageRoute(
