@@ -8,7 +8,7 @@ class RegisterOrUpdateUser {
 
   RegisterOrUpdateUser(this.userRepository);
 
-  Future<Either<Failure, bool>> call(UserEntity userEntity) {
+  Future<Either<Failure, UserEntity>> call(UserEntity userEntity) {
     return userRepository.registerOrUpdateUser(userEntity);
   }
 }
