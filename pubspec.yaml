@@ -43,7 +43,6 @@ dependencies:
   flutter_dotenv: ^2.1.0
   font_awesome_flutter: ^8.10.0
   get_it: ^5.0.1
-  giffy_dialog: ^1.8.0
   google_fonts: ^1.1.1
   image_picker: ^0.6.7+14
   intl: ^0.16.1
@@ -54,6 +53,11 @@ dependencies:
   sentry: ">=3.0.0 <4.0.0"
   shared_preferences: ^0.5.12+4
   url_launcher: ^5.7.10
+  firebase_core: "0.5.3"
+  firebase_auth: "^0.18.4+1"
+  firebase_storage: "^5.2.0"
+  firebase_database: "^4.4.0"
+  firebase_messaging: ^7.0.3
 
 dev_dependencies:
   flutter_test:

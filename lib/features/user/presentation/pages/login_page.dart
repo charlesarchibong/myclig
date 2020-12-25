@@ -159,7 +159,7 @@ class _LoginPageState extends State<LoginPage> {
                               onPressed: () {
                                 Navigator.pushNamed(
                                   context,
-                                  EDIT_PROFILE_SCREEN,
+                                  DASHBOARD_SCREEN,
                                 );
                               },
                               child: Text(

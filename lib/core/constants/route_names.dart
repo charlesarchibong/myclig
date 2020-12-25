@@ -4,3 +4,4 @@ const VERIFY_REGISTRATION_SCREEN = '/create_verify_account_screen';
 const LOGIN_SCREEN = '/login_screen';
 const FORGET_PASSWORD_SCREEN = '/forget_password_screen';
 const EDIT_PROFILE_SCREEN = '/edit_profile_screen';
+const DASHBOARD_SCREEN = '/dashboard_screen';

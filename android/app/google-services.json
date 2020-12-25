@@ -1,0 +1,86 @@
+{
+  "project_info": {
+    "project_number": "787993572277",
+    "firebase_url": "https://mycligapp-dd664.firebaseio.com",
+    "project_id": "mycligapp-dd664",
+    "storage_bucket": "mycligapp-dd664.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:787993572277:android:a9de9dccc2aa2d0afe5ffc",
+        "android_client_info": {
+          "package_name": "com.mycligapp.myclig2"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "787993572277-75qit9ic0k7533048md1h9cq7ck9g9d6.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.mycligapp.myclig2",
+            "certificate_hash": "47c4c129e78bc1e91083ee4f6664d14191f458d4"
+          }
+        },
+        {
+          "client_id": "787993572277-129856oobjo00hu13n5holck633dar4a.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBPNh1I8RqyBaK1LOfIbW5h0iJw4ByxuiE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "787993572277-129856oobjo00hu13n5holck633dar4a.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:787993572277:android:0206e3bfd3a1ace3fe5ffc",
+        "android_client_info": {
+          "package_name": "com.mycligapp.mycligapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "787993572277-e6gma8rdej4nbb3rmunhu68iflg8pqij.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.mycligapp.mycligapp",
+            "certificate_hash": "eb0c2ed747fd8fbefb2bc0e597caa1c5c0d96a5c"
+          }
+        },
+        {
+          "client_id": "787993572277-129856oobjo00hu13n5holck633dar4a.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBPNh1I8RqyBaK1LOfIbW5h0iJw4ByxuiE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "787993572277-129856oobjo00hu13n5holck633dar4a.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      },
+      "admob_app_id": "ca-app-pub-5918287877681087~7714848698"
+    }
+  ],
+  "configuration_version": "1"
+}

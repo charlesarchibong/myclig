@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:myclig/core/constants/route_names.dart';
+import 'package:myclig/features/default/presentation/pages/dashboard.dart';
 import 'package:myclig/features/default/presentation/pages/landing_page.dart';
 import 'package:myclig/features/user/presentation/pages/edit_profile_page.dart';
 import 'package:myclig/features/user/presentation/pages/forget_password_page.dart';
@@ -13,6 +14,10 @@ class RouteGenerator {
       case HOME_SCREEN:
         return MaterialPageRoute(
           builder: (_) => LandingPage(),
+        );
+      case DASHBOARD_SCREEN:
+        return MaterialPageRoute(
+          builder: (_) => DashBoardScreen(),
         );
       case LOGIN_SCREEN:
         return MaterialPageRoute(

@@ -1,16 +1,31 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:logger/logger.dart';
 import 'package:myclig/core/constants/route_names.dart';
 import 'package:myclig/core/routes/route_generator.dart';
 
 import 'core/constants/colors_constant.dart';
+import 'core/dependencies/injection_container.dart' as di;
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp()
+      .then(
+        (value) => Logger().i(
+          "connected " + value.options.asMap.toString(),
+        ),
+      )
+      .catchError(
+        (e) => Logger().i(e.toString()),
+      );
+  await di.initDi();
+  await DotEnv().load('.env');
   runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(

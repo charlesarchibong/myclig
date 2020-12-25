@@ -4,35 +4,44 @@ import 'package:myclig/features/user/domain/entities/user_entity.dart';
 
 class UserModel extends UserEntity {
   UserModel({
-    String id,
+    String userId,
     String fullName,
-    String userName,
+    String username,
     String phone,
     String profession,
     String organization,
     String location,
     String photoUrl,
+    String email,
+    String fcmToken,
+    bool verified = false,
   }) : super(
-          id: id,
+          userId: userId,
           fullName: fullName,
           location: location,
           organization: organization,
           phone: phone,
           profession: profession,
-          userName: userName,
+          username: username,
           photoUrl: photoUrl,
+          email: email,
+          verified: verified,
+          fcmToken: fcmToken,
         );
 
   Map<String, dynamic> toMap() {
     return {
-      'id': id,
+      'userId': userId,
       'fullName': fullName,
-      'userName': userName,
+      'username': username,
       'phone': phone,
       'profession': profession,
       'organization': organization,
       'location': location,
-      'photoUrl': photoUrl,
+      'img_url': photoUrl,
+      'email': email,
+      'verified': verified,
+      'fcmToken': fcmToken
     };
   }
 
@@ -40,14 +49,17 @@ class UserModel extends UserEntity {
     if (map == null) return null;
 
     return UserModel(
-      id: map['id'],
+      userId: map['userId'],
       fullName: map['fullName'],
-      userName: map['userName'],
+      username: map['username'],
       phone: map['phone'],
       profession: map['profession'],
       organization: map['organization'],
       location: map['location'],
-      photoUrl: map['photoUrl'],
+      photoUrl: map['img_url'],
+      email: map['email'],
+      verified: map['verified'],
+      fcmToken: map['fcmToken'],
     );
   }
 
