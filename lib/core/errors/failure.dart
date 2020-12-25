@@ -45,6 +45,11 @@ class UserNameAlreadyExistFailure extends Failure {
   List<Object> get props => [];
 }
 
+class UnknownFailure extends Failure {
+  @override
+  List<Object> get props => [];
+}
+
 class PhoneAlreadyExistFailure extends Failure {
   @override
   List<Object> get props => [];

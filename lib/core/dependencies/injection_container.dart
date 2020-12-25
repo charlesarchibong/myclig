@@ -15,6 +15,7 @@ import 'package:myclig/core/network/http_requester.dart';
 import 'package:myclig/core/network/network_info.dart';
 import 'package:myclig/core/notification/get_fcm_user_token.dart';
 import 'package:myclig/core/upload/upload_to_firebase_storage.dart';
+import 'package:myclig/features/user/data/datasources/user_remote_data_source.dart';
 import 'package:myclig/features/user/data/repositories/user_repository_impl.dart';
 import 'package:myclig/features/user/domain/repositories/user_repository.dart';
 import 'package:myclig/features/user/domain/usecases/get_user.dart';
@@ -60,7 +61,19 @@ Future<void> initDi() async {
   );
 
   sl.registerLazySingleton<UserRepository>(
-    () => UserRepositoryImpl(),
+    () => UserRepositoryImpl(
+      networkInfo: sl(),
+      userRemoteDataSource: sl(),
+    ),
+  );
+
+  sl.registerLazySingleton<UserRemoteDataSource>(
+    () => UserRemoteDataSourceImpl(
+      appNotification: sl(),
+      databaseReference: databaseReference,
+      firebaseAuth: firebaseAuth,
+      uploadToFirebase: sl(),
+    ),
   );
 
   sl.registerLazySingleton(
