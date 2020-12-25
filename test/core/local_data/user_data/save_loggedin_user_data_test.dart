@@ -19,13 +19,13 @@ main() {
   });
   final UserModel userModel = UserModel(
     fullName: 'Charles',
-    id: '111',
+    userId: '111',
     location: 'Calabar',
     organization: 'Software',
     phone: '09039311559',
     photoUrl: 'https://charlesarchibong.com',
     profession: 'Programmer',
-    userName: 'zealcodes',
+    username: 'zealcodes',
   );
   test(
       'should test if the user data was successfully cache in the local storage',
