@@ -11,6 +11,7 @@ class UserEntity extends Equatable {
   final String organization;
   final String location;
   final String photoUrl;
+  final String password;
   final bool verified;
   final String fcmToken;
   UserEntity({
@@ -21,6 +22,7 @@ class UserEntity extends Equatable {
     this.organization,
     this.location,
     this.photoUrl,
+    this.password,
     this.userId,
     this.verified = false,
     @required this.email,
@@ -32,6 +34,7 @@ class UserEntity extends Equatable {
         username,
         phone,
         profession,
+        password,
         organization,
         location,
         photoUrl,

@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:dartz/dartz.dart';
 import 'package:myclig/core/errors/failure.dart';
 import 'package:myclig/features/user/domain/entities/user_entity.dart';
@@ -18,7 +20,8 @@ class UserRepositoryImpl implements UserRepository {
 
   @override
   Future<Either<Failure, UserEntity>> registerOrUpdateUser(
-      UserEntity userEntity) {
+      UserEntity userEntity,
+      [File image]) {
     // TODO: implement registerOrUpdateUser
     throw UnimplementedError();
   }

@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 import 'package:myclig/features/user/domain/entities/user_entity.dart';
@@ -10,9 +12,8 @@ abstract class UserEvent extends Equatable {
 
 class RegisterOrUpdateUserEvent extends UserEvent {
   final UserEntity userEntity;
-  RegisterOrUpdateUserEvent({
-    @required this.userEntity,
-  });
+  final File file;
+  RegisterOrUpdateUserEvent({@required this.userEntity, this.file});
   @override
   List<Object> get props => [userEntity];
 }

@@ -4,6 +4,7 @@ import 'package:device_info/device_info.dart';
 import 'package:dio/dio.dart';
 import 'package:dio_http_cache/dio_http_cache.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_database/firebase_database.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
@@ -32,8 +33,9 @@ final sl = GetIt.instance;
 
 Future<void> initDi() async {
   final sharePreferences = await SharedPreferences.getInstance();
-  FirebaseStorage firebaseStorage = FirebaseStorage.instance;
-  FirebaseAuth firebaseAuth = FirebaseAuth.instance;
+  final FirebaseStorage firebaseStorage = FirebaseStorage.instance;
+  final FirebaseAuth firebaseAuth = FirebaseAuth.instance;
+  final databaseReference = FirebaseDatabase.instance.reference();
 
   sl.registerLazySingleton<AppNotification>(
     () => AppNotificationImpl(
