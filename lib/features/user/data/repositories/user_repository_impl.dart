@@ -18,15 +18,37 @@ class UserRepositoryImpl implements UserRepository {
     @required this.userRemoteDataSource,
   });
   @override
-  Future<Either<Failure, UserEntity>> getUser(String userId) {
-    // TODO: implement getUser
-    throw UnimplementedError();
+  Future<Either<Failure, UserEntity>> getUser(String userId) async {
+    try {
+      if (await networkInfo.isConnected) {
+        return Right(
+          await userRemoteDataSource.getUser(userId),
+        );
+      } else {
+        throw NoInternetException();
+      }
+    } catch (e) {
+      return Left(MapExceptionToFailure.errorToFailre(e));
+    }
   }
 
   @override
-  Future<Either<Failure, UserEntity>> loginUser(String email, String password) {
-    // TODO: implement loginUser
-    throw UnimplementedError();
+  Future<Either<Failure, UserEntity>> loginUser(
+      String email, String password) async {
+    try {
+      if (await networkInfo.isConnected) {
+        return Right(
+          await userRemoteDataSource.loginUser(
+            email,
+            password,
+          ),
+        );
+      } else {
+        throw NoInternetException();
+      }
+    } catch (e) {
+      return Left(MapExceptionToFailure.errorToFailre(e));
+    }
   }
 
   @override

@@ -37,15 +37,74 @@ class UserRemoteDataSourceImpl implements UserRemoteDataSource {
     @required this.saveLoggedInUserData,
   });
   @override
-  Future<UserModel> getUser(String userId) {
-    // TODO: implement getUser
-    throw UnimplementedError();
+  Future<UserModel> getUser(String userId) async {
+    try {
+      UserModel userModel;
+
+      final DataSnapshot dataSnapshot = await databaseReference
+          .child(USER_NODE)
+          .orderByChild('userId')
+          .equalTo(userId)
+          .once();
+
+      Map<String, dynamic>.from(dataSnapshot.value)
+          .forEach((key, values) async {
+        // if (key != null && key.isNotEmpty) throw UserNameAlreadyExistException();
+        userModel = UserModel.fromMap(
+          Map<String, dynamic>.from(
+            values,
+          ),
+        );
+        print(userModel.username);
+      });
+      return userModel;
+    } catch (e) {
+      String messeage = 'An error occurred, please try again.';
+      if (e is FirebaseException) {
+        messeage = e.message;
+      }
+      throw ServerException(
+        message: messeage,
+      );
+    }
   }
 
   @override
-  Future<UserModel> loginUser(String email, String password) {
-    // TODO: implement loginUser
-    throw UnimplementedError();
+  Future<UserModel> loginUser(String email, String password) async {
+    try {
+      UserModel userModel;
+      UserCredential userCredential =
+          await firebaseAuth.signInWithEmailAndPassword(
+        email: email,
+        password: password,
+      );
+      final DataSnapshot dataSnapshot = await databaseReference
+          .child(USER_NODE)
+          .orderByChild('userId')
+          .equalTo(userCredential.user.uid)
+          .once();
+
+      Map<String, dynamic>.from(dataSnapshot.value)
+          .forEach((key, values) async {
+        // if (key != null && key.isNotEmpty) throw UserNameAlreadyExistException();
+        userModel = UserModel.fromMap(
+          Map<String, dynamic>.from(
+            values,
+          ),
+        );
+        print(userModel.username);
+      });
+      saveLoggedInUserData(userModel);
+      return userModel;
+    } catch (e) {
+      String messeage = 'An error occurred, please try again.';
+      if (e is FirebaseAuthException) {
+        messeage = e.message;
+      }
+      throw ServerException(
+        message: messeage,
+      );
+    }
   }
 
   @override
@@ -63,9 +122,7 @@ class UserRemoteDataSourceImpl implements UserRemoteDataSource {
         // if (e.code == 'user-not-found') {
         //   return registerUser(userEntity);
         // }
-        if (e.code == 'wrong-password') {
-          throw EmailAlreadyExistException();
-        }
+        throw ServerException(message: e.message);
       }
       rethrow;
     }
@@ -123,10 +180,10 @@ class UserRemoteDataSourceImpl implements UserRemoteDataSource {
     } catch (e) {
       print(e);
       if (e is FirebaseAuthException) {
-        print(e.code);
-        if (e.code == 'email-already-in-use') {
-          throw EmailAlreadyExistException();
-        }
+        // if (e.code == 'user-not-found') {
+        //   return registerUser(userEntity);
+        // }
+        throw ServerException(message: e.message);
       }
       rethrow;
     }
@@ -175,15 +232,11 @@ class UserRemoteDataSourceImpl implements UserRemoteDataSource {
       }
       if (e is FirebaseAuthException) {
         print(e.code);
-        if (e.code == 'email-already-in-use') {
-          throw EmailAlreadyExistException();
-        }
-        if (e.code == 'weak-password') {
-          throw ServerException(
-            message:
-                'Password is weak, password must contain at least one uppercase, one lowercase and special characters',
-          );
-        }
+
+        // if (e.code == 'user-not-found') {
+        //   return registerUser(userEntity);
+        // }
+        throw ServerException(message: e.message);
       } else if (e is EmailAlreadyExistException ||
           e is PhoneAlreadyExistException ||
           e is UserNameAlreadyExistException) {
