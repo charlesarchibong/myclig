@@ -1,10 +1,13 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:logger/logger.dart';
 import 'package:myclig/core/constants/route_names.dart';
+import 'package:myclig/core/dependencies/injection_container.dart';
 import 'package:myclig/core/routes/route_generator.dart';
+import 'package:myclig/features/user/presentation/bloc/user_bloc.dart';
 
 import 'core/constants/colors_constant.dart';
 import 'core/dependencies/injection_container.dart' as di;
@@ -22,7 +25,14 @@ void main() async {
       );
   await di.initDi();
   await DotEnv().load('.env');
-  runApp(MyApp());
+  runApp(MultiBlocProvider(
+    providers: [
+      BlocProvider<UserBloc>(
+        create: (BuildContext context) => sl<UserBloc>(),
+      ),
+    ],
+    child: MyApp(),
+  ));
 }
 
 class MyApp extends StatelessWidget {
@@ -42,7 +52,7 @@ class MyApp extends StatelessWidget {
           Theme.of(context).textTheme,
         ),
       ),
-      initialRoute: HOME_SCREEN,
+      initialRoute: SPLASHSCREEN,
       onGenerateRoute: RouteGenerator.onGenerateRoute,
     );
   }
