@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:myclig/core/constants/colors_constant.dart';
 import 'package:myclig/core/constants/image_assets_constnts.dart';
 import 'package:myclig/core/constants/route_names.dart';
+import 'package:myclig/core/dependencies/injection_container.dart';
+import 'package:myclig/core/local_data/user_data/get_loggedin_user_data.dart';
+import 'package:myclig/features/user/domain/entities/user_entity.dart';
 
 class LandingPage extends StatefulWidget {
   @override
@@ -9,6 +12,24 @@ class LandingPage extends StatefulWidget {
 }
 
 class _LandingPageState extends State<LandingPage> {
+  void checkLoggedInUser() {
+    GetLoggedInUserData getLoggedInUserData = sl<GetLoggedInUserData>();
+    UserEntity userEntity = getLoggedInUserData();
+    print(userEntity.fullName);
+    if (userEntity != null) {
+      Navigator.pushNamed(
+        context,
+        userEntity.verified ? DASHBOARD_SCREEN : VERIFY_REGISTRATION_SCREEN,
+      );
+    }
+  }
+
+  @override
+  void initState() {
+    // checkLoggedInUser();
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Material(

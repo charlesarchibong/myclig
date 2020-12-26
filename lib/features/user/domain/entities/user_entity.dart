@@ -12,8 +12,10 @@ class UserEntity extends Equatable {
   final String location;
   final String photoUrl;
   final String password;
+  final String referalCode;
   final bool verified;
   final String fcmToken;
+  final bool checkEmailAndUsername;
   UserEntity({
     this.fullName,
     this.username,
@@ -22,9 +24,11 @@ class UserEntity extends Equatable {
     this.organization,
     this.location,
     this.photoUrl,
+    this.referalCode,
     this.password,
     this.userId,
     this.verified = false,
+    this.checkEmailAndUsername = true,
     @required this.email,
     this.fcmToken,
   });
@@ -35,12 +39,17 @@ class UserEntity extends Equatable {
         phone,
         profession,
         password,
+        referalCode,
         organization,
+        checkEmailAndUsername,
         location,
         photoUrl,
-        this.verified,
+        verified,
         email,
         userId,
         fcmToken,
       ];
+
+  @override
+  bool get stringify => true;
 }

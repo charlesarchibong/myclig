@@ -27,8 +27,7 @@ class UserBloc extends Bloc<UserEvent, UserState> {
   UserState get initialState => InitialUserState();
 
   @override
-  Stream<UserState> mapEventToState(
-      UserState currentState, UserEvent event) async* {
+  Stream<UserState> mapEventToState(UserEvent event) async* {
     if (event is RegisterOrUpdateUserEvent) {
       yield LoadingUserState();
       final user = await registerOrUpdateUser(event.userEntity, event.file);

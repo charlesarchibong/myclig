@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:myclig/core/constants/route_names.dart';
 
 class DashBoardScreen extends StatefulWidget {
   @override
@@ -7,30 +8,34 @@ class DashBoardScreen extends StatefulWidget {
 
 class _DashBoardScreenState extends State<DashBoardScreen> {
   @override
+  void initState() {
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return DefaultTabController(
       length: 4,
       child: Scaffold(
         appBar: AppBar(
+          leading: Text(''),
           backgroundColor: Color(0xff330055),
           actions: [
             IconButton(
               icon: Icon(
                 Icons.person_outline_sharp,
-                size: 33,
                 color: Colors.white,
               ),
               onPressed: () {
-                // Navigator.pushNamed(
-                //   context,
-                //   EDIT_PROFILE_SCREEN,
-                // );
+                Navigator.pushNamed(
+                  context,
+                  EDIT_PROFILE_SCREEN,
+                );
               },
             ),
             IconButton(
               icon: Icon(
                 Icons.search,
-                size: 33,
                 color: Colors.white,
               ),
               onPressed: null,
@@ -38,7 +43,6 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
             IconButton(
               icon: Icon(
                 Icons.notifications_none,
-                size: 33,
                 color: Colors.white,
               ),
               onPressed: null,
@@ -104,6 +108,7 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
                   child: Padding(
                     padding: const EdgeInsets.only(bottom: 20, right: 20),
                     child: FloatingActionButton(
+                      heroTag: 'btn3',
                       child: Icon(
                         Icons.edit,
                         color: Colors.black87,
@@ -118,6 +123,7 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
                   child: Padding(
                     padding: const EdgeInsets.only(bottom: 20, right: 20),
                     child: FloatingActionButton(
+                      heroTag: 'btn4',
                       child: Icon(
                         Icons.camera_alt,
                         color: Colors.white,
@@ -151,6 +157,7 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
                   child: Padding(
                     padding: const EdgeInsets.only(bottom: 20, right: 20),
                     child: FloatingActionButton(
+                      heroTag: 'btn5',
                       elevation: 5,
                       child: Icon(
                         Icons.videocam_sharp,
@@ -186,6 +193,7 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
                   child: Padding(
                     padding: const EdgeInsets.only(bottom: 20, right: 20),
                     child: FloatingActionButton(
+                      heroTag: 'btn1',
                       child: Icon(
                         Icons.person,
                         color: Colors.white,
@@ -220,6 +228,7 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
                   child: Padding(
                     padding: const EdgeInsets.only(bottom: 20, right: 20),
                     child: FloatingActionButton(
+                      heroTag: 'btn2',
                       child: Icon(
                         Icons.chat_bubble_outlined,
                         color: Colors.white,
