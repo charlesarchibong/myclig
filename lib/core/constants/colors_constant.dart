@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 class ColorConstant {
   static const Color PRIMARY_COLOR = Color(0xff330055);
+  static const Color LOADING_COLOR = Color(0xff634975);
   static const Color REDACCENT_COLOR = Color(0xff330055);
   static const Color BACKGROUND = Color(0xffFAFAFA);
   static const Color GRAY = Color.fromRGBO(211, 211, 211, 0.5);
