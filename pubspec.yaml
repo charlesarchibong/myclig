@@ -53,7 +53,7 @@ dependencies:
   sentry: ">=3.0.0 <4.0.0"
   shared_preferences: ^0.5.12+4
   url_launcher: ^5.7.10
-  flutter_bloc: ^0.4.12
+  flutter_bloc: ^3.0.0
   firebase_core: "0.5.3"
   firebase_auth: "^0.18.4+1"
   firebase_storage: "^5.2.0"
