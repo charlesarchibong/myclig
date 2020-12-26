@@ -37,3 +37,12 @@ class GetUserEvent extends UserEvent {
   @override
   List<Object> get props => [userId];
 }
+
+class ResetPasswordEvent extends UserEvent {
+  final String email;
+  ResetPasswordEvent({
+    @required this.email,
+  });
+  @override
+  List<Object> get props => [email];
+}

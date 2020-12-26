@@ -10,4 +10,5 @@ abstract class UserRepository {
       [File image]);
   Future<Either<Failure, UserEntity>> loginUser(String email, String password);
   Future<Either<Failure, UserEntity>> getUser(String userId);
+  Future<Either<Failure, void>> resetPassword(String email);
 }

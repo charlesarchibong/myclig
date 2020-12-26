@@ -18,9 +18,10 @@ import 'package:myclig/core/upload/upload_to_firebase_storage.dart';
 import 'package:myclig/features/user/data/datasources/user_remote_data_source.dart';
 import 'package:myclig/features/user/data/repositories/user_repository_impl.dart';
 import 'package:myclig/features/user/domain/repositories/user_repository.dart';
-import 'package:myclig/features/user/domain/usecases/get_user.dart';
-import 'package:myclig/features/user/domain/usecases/login_user.dart';
-import 'package:myclig/features/user/domain/usecases/register_or_update_user.dart';
+import 'package:myclig/features/user/domain/usecases/get_user_usecase.dart';
+import 'package:myclig/features/user/domain/usecases/login_user_usecase.dart';
+import 'package:myclig/features/user/domain/usecases/register_or_update_user_usecase.dart';
+import 'package:myclig/features/user/domain/usecases/reset_password_usecase.dart';
 import 'package:myclig/features/user/presentation/bloc/user_bloc.dart';
 import 'package:package_info/package_info.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -61,6 +62,7 @@ Future<void> initDi() async {
       getUser: sl(),
       loginUser: sl(),
       registerOrUpdateUser: sl(),
+      resetPassword: sl(),
     ),
   );
 
@@ -83,6 +85,12 @@ Future<void> initDi() async {
 
   sl.registerLazySingleton(
     () => GetUser(
+      sl(),
+    ),
+  );
+
+  sl.registerLazySingleton(
+    () => ResetPassword(
       sl(),
     ),
   );

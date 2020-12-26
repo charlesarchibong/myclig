@@ -70,4 +70,19 @@ class UserRepositoryImpl implements UserRepository {
       return Left(MapExceptionToFailure.errorToFailre(e));
     }
   }
+
+  @override
+  Future<Either<Failure, void>> resetPassword(String email) async {
+    try {
+      if (await networkInfo.isConnected) {
+        return Right(
+          await userRemoteDataSource.resetPassword(email),
+        );
+      } else {
+        throw NoInternetException();
+      }
+    } catch (e) {
+      return Left(MapExceptionToFailure.errorToFailre(e));
+    }
+  }
 }

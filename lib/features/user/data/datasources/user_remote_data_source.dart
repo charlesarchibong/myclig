@@ -17,10 +17,11 @@ abstract class UserRemoteDataSource {
   Future<UserModel> registerOrUpdateUser(UserEntity userEntity, [File image]);
   Future<UserModel> loginUser(String email, String password);
   Future<UserModel> getUser(String userId);
+  Future<void> resetPassword(String email);
 }
 
 const USER_NODE = 'Users';
-const REFERRALS = 'Referrals';
+const REFERRALS_NODE = 'Referrals';
 
 class UserRemoteDataSourceImpl implements UserRemoteDataSource {
   final UploadToFirebase uploadToFirebase;
@@ -279,13 +280,13 @@ class UserRemoteDataSourceImpl implements UserRemoteDataSource {
 
   Future<bool> _incrementReferal(String code, String userId) async {
     final DataSnapshot dataSnapshot = await databaseReference
-        .child(REFERRALS)
+        .child(REFERRALS_NODE)
         .orderByChild('code')
         .equalTo(code)
         .once();
     Map<String, dynamic>.from(dataSnapshot.value).forEach((key, values) async {
       await databaseReference
-          .child(REFERRALS)
+          .child(REFERRALS_NODE)
           .child(key)
           .child('users')
           .child(userId)
@@ -325,5 +326,19 @@ class UserRemoteDataSourceImpl implements UserRemoteDataSource {
       }
     });
     return exist;
+  }
+
+  @override
+  Future<void> resetPassword(String email) async {
+    try {
+      return await firebaseAuth.sendPasswordResetEmail(
+        email: email,
+      );
+    } catch (e) {
+      if (e is FirebaseAuthException) {
+        throw ServerException(message: e.message);
+      }
+      throw ServerException(message: 'Error occurred, please try again');
+    }
   }
 }
