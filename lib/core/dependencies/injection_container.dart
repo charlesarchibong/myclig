@@ -36,7 +36,11 @@ Future<void> initDi() async {
   final sharePreferences = await SharedPreferences.getInstance();
   final FirebaseStorage firebaseStorage = FirebaseStorage.instance;
   final FirebaseAuth firebaseAuth = FirebaseAuth.instance;
-  final databaseReference = FirebaseDatabase.instance.reference();
+  final databaseReference = FirebaseDatabase();
+  databaseReference.setPersistenceEnabled(true);
+  databaseReference.setPersistenceCacheSizeBytes(10000000);
+
+  // databaseReference.a
 
   sl.registerLazySingleton<AppNotification>(
     () => AppNotificationImpl(
@@ -70,9 +74,10 @@ Future<void> initDi() async {
   sl.registerLazySingleton<UserRemoteDataSource>(
     () => UserRemoteDataSourceImpl(
       appNotification: sl(),
-      databaseReference: databaseReference,
+      databaseReference: databaseReference.reference(),
       firebaseAuth: firebaseAuth,
       uploadToFirebase: sl(),
+      saveLoggedInUserData: sl(),
     ),
   );
 
