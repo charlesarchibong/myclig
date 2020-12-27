@@ -25,10 +25,8 @@ class UserBloc extends Bloc<UserEvent, UserState> {
   })  : assert(getUser != null),
         assert(registerOrUpdateUser != null),
         assert(loginUser != null),
-        assert(resetPassword != null);
-
-  @override
-  UserState get initialState => InitialUserState();
+        assert(resetPassword != null),
+        super(InitialUserState());
 
   @override
   Stream<UserState> mapEventToState(UserEvent event) async* {

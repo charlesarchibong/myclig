@@ -22,7 +22,6 @@ class _SplashScreenState extends State<SplashScreen> {
     GetLoggedInUserData getLoggedInUserData = sl<GetLoggedInUserData>();
     UserEntity userEntity = getLoggedInUserData();
     Logger().i(userEntity.toString());
-    Logger().i(userEntity.photoUrl);
 
     // UserEntity userEntity =
     //     Provider.of<UserProvider>(context, listen: false).getLoggedInUser();

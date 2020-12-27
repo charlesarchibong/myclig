@@ -1,5 +1,7 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:myclig/core/constants/route_names.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class DashBoardScreen extends StatefulWidget {
   @override
@@ -114,7 +116,12 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
                         color: Colors.black87,
                       ),
                       backgroundColor: Colors.green[300],
-                      onPressed: () {},
+                      onPressed: () async {
+                        SharedPreferences sp =
+                            await SharedPreferences.getInstance();
+                        sp.clear();
+                        FirebaseAuth.instance.signOut();
+                      },
                     ),
                   ),
                 ),
