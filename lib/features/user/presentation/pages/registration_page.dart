@@ -24,6 +24,7 @@ class _RegistrationPageState extends State<RegistrationPage> {
   // sl<UserBloc>()
   @override
   void dispose() {
+    // sl<UserBloc>().close();
     super.dispose();
   }
 

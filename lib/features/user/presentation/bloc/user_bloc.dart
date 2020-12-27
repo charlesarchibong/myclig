@@ -45,7 +45,7 @@ class UserBloc extends Bloc<UserEvent, UserState> {
     } else if (event is ResetPasswordEvent) {
       yield LoadingUserState();
       final reset = await resetPassword(event.email);
-      yield* _mapEitherErrorOrLoaded(reset);
+      yield* _mapEitherVoid(reset);
     }
   }
 
@@ -56,6 +56,16 @@ class UserBloc extends Bloc<UserEvent, UserState> {
           message: MapFailureToMessage.mapFailureToMessage(failure)),
       (userEntity) => LoadedUserState(
         userEntity: userEntity,
+      ),
+    );
+  }
+
+  Stream<UserState> _mapEitherVoid(Either<Failure, void> user) async* {
+    yield user.fold(
+      (failure) => ErrorUserState(
+          message: MapFailureToMessage.mapFailureToMessage(failure)),
+      (userEntity) => LoadedUserState(
+        userEntity: null,
       ),
     );
   }
