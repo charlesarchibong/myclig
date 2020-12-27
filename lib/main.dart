@@ -7,7 +7,11 @@ import 'package:logger/logger.dart';
 import 'package:myclig/core/constants/route_names.dart';
 import 'package:myclig/core/dependencies/injection_container.dart';
 import 'package:myclig/core/routes/route_generator.dart';
-import 'package:myclig/features/user/presentation/bloc/user_bloc.dart';
+import 'package:myclig/features/user/presentation/bloc/login/login_bloc.dart';
+import 'package:myclig/features/user/presentation/bloc/reset_password/reset_password_bloc.dart';
+import 'package:myclig/features/user/presentation/bloc/user/create_account_bloc.dart';
+import 'package:myclig/features/user/presentation/bloc/user/user_bloc.dart';
+import 'package:myclig/features/user/presentation/bloc/user/verify_created_account_bloc.dart';
 
 import 'core/constants/colors_constant.dart';
 import 'core/dependencies/injection_container.dart' as di;
@@ -29,6 +33,18 @@ void main() async {
     providers: [
       BlocProvider<UserBloc>(
         create: (BuildContext context) => sl<UserBloc>(),
+      ),
+      BlocProvider<VerifyCreatedAccountBloc>(
+        create: (BuildContext context) => sl<VerifyCreatedAccountBloc>(),
+      ),
+      BlocProvider<LoginBloc>(
+        create: (BuildContext context) => sl<LoginBloc>(),
+      ),
+      BlocProvider<CreateAccountBloc>(
+        create: (BuildContext context) => sl<CreateAccountBloc>(),
+      ),
+      BlocProvider<ResetPasswordBloc>(
+        create: (BuildContext context) => sl<ResetPasswordBloc>(),
       ),
     ],
     child: MyApp(),

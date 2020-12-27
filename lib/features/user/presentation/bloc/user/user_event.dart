@@ -18,17 +18,6 @@ class RegisterOrUpdateUserEvent extends UserEvent {
   List<Object> get props => [userEntity];
 }
 
-class LoginUserEvent extends UserEvent {
-  final String email;
-  final String password;
-  LoginUserEvent({
-    @required this.email,
-    @required this.password,
-  });
-  @override
-  List<Object> get props => [email, password];
-}
-
 class GetUserEvent extends UserEvent {
   final String userId;
   GetUserEvent({
@@ -38,11 +27,11 @@ class GetUserEvent extends UserEvent {
   List<Object> get props => [userId];
 }
 
-class ResetPasswordEvent extends UserEvent {
-  final String email;
-  ResetPasswordEvent({
-    @required this.email,
-  });
-  @override
-  List<Object> get props => [email];
-}
+// class ResetPasswordEvent extends UserEvent {
+//   final String email;
+//   ResetPasswordEvent({
+//     @required this.email,
+//   });
+//   @override
+//   List<Object> get props => [email];
+// }

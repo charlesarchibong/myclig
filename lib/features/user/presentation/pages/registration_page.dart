@@ -6,9 +6,9 @@ import 'package:myclig/core/dependencies/injection_container.dart';
 import 'package:myclig/core/utils/email_validator.dart';
 import 'package:myclig/core/utils/flush_bar_notification.dart';
 import 'package:myclig/features/user/domain/entities/user_entity.dart';
-import 'package:myclig/features/user/presentation/bloc/user_bloc.dart';
-import 'package:myclig/features/user/presentation/bloc/user_event.dart';
-import 'package:myclig/features/user/presentation/bloc/user_state.dart';
+import 'package:myclig/features/user/presentation/bloc/user/create_account_bloc.dart';
+import 'package:myclig/features/user/presentation/bloc/user/user_event.dart';
+import 'package:myclig/features/user/presentation/bloc/user/user_state.dart';
 
 class RegistrationPage extends StatefulWidget {
   @override
@@ -33,7 +33,7 @@ class _RegistrationPageState extends State<RegistrationPage> {
     return Material(
       color: ColorConstant.PRIMARY_COLOR,
       child: SafeArea(
-        child: BlocConsumer<UserBloc, UserState>(
+        child: BlocConsumer<CreateAccountBloc, UserState>(
             listener: (context, state) => _listenToRegistrationState(
                   state,
                   context,
@@ -283,7 +283,7 @@ class _RegistrationPageState extends State<RegistrationPage> {
       fullName: _fullNameController.text,
       password: _passwordController.text,
     );
-    sl<UserBloc>().add(
+    sl<CreateAccountBloc>().add(
       RegisterOrUpdateUserEvent(
         userEntity: userEntity,
       ),

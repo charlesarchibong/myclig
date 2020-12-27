@@ -12,9 +12,9 @@ import 'package:myclig/core/local_data/user_data/get_loggedin_user_data.dart';
 import 'package:myclig/core/utils/flush_bar_notification.dart';
 import 'package:myclig/core/utils/phone_number_validator.dart';
 import 'package:myclig/features/user/domain/entities/user_entity.dart';
-import 'package:myclig/features/user/presentation/bloc/user_bloc.dart';
-import 'package:myclig/features/user/presentation/bloc/user_event.dart';
-import 'package:myclig/features/user/presentation/bloc/user_state.dart';
+import 'package:myclig/features/user/presentation/bloc/user/user_bloc.dart';
+import 'package:myclig/features/user/presentation/bloc/user/user_event.dart';
+import 'package:myclig/features/user/presentation/bloc/user/user_state.dart';
 
 class EditProfilePage extends StatefulWidget {
   @override

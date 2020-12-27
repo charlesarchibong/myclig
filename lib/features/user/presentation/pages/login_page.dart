@@ -6,9 +6,9 @@ import 'package:myclig/core/constants/route_names.dart';
 import 'package:myclig/core/dependencies/injection_container.dart';
 import 'package:myclig/core/utils/email_validator.dart';
 import 'package:myclig/core/utils/flush_bar_notification.dart';
-import 'package:myclig/features/user/presentation/bloc/user_bloc.dart';
-import 'package:myclig/features/user/presentation/bloc/user_event.dart';
-import 'package:myclig/features/user/presentation/bloc/user_state.dart';
+import 'package:myclig/features/user/presentation/bloc/login/login_bloc.dart';
+import 'package:myclig/features/user/presentation/bloc/login/login_event.dart';
+import 'package:myclig/features/user/presentation/bloc/login/login_state.dart';
 import 'package:myclig/features/user/presentation/widgets/top_right_corner_widget.dart';
 
 class LoginPage extends StatefulWidget {
@@ -26,7 +26,7 @@ class _LoginPageState extends State<LoginPage> {
     return Material(
       color: ColorConstant.PRIMARY_COLOR,
       child: SafeArea(
-        child: BlocConsumer<UserBloc, UserState>(
+        child: BlocConsumer<LoginBloc, LoginStates>(
             listener: (context, state) =>
                 _listenToRegistrationState(context, state),
             builder: (context, state) {
@@ -172,14 +172,14 @@ class _LoginPageState extends State<LoginPage> {
                                   width: 300,
                                   height: 50.0,
                                   child: FlatButton(
-                                    color: state is LoadingUserState
+                                    color: state is LoadingLoginState
                                         ? ColorConstant.LOADING_COLOR
                                         : ColorConstant.PRIMARY_COLOR,
-                                    onPressed: state is LoadingUserState
+                                    onPressed: state is LoadingLoginState
                                         ? () {}
                                         : _loginUser,
                                     child: Text(
-                                      state is LoadingUserState
+                                      state is LoadingLoginState
                                           ? 'Loading...'
                                           : 'Login',
                                       style: TextStyle(
@@ -262,22 +262,22 @@ class _LoginPageState extends State<LoginPage> {
       return;
     }
 
-    sl<UserBloc>().add(
-      LoginUserEvent(
+    sl<LoginBloc>().add(
+      AuthenticateEvent(
         email: _emailController.text,
         password: _passwordController.text,
       ),
     );
   }
 
-  void _listenToRegistrationState(BuildContext context, UserState userState) {
-    if (userState is ErrorUserState) {
+  void _listenToRegistrationState(BuildContext context, LoginStates userState) {
+    if (userState is LoginErrorState) {
       FlushBarNotification.showErrorMessage(
         context: context,
         message: userState.message,
         title: 'Error',
       );
-    } else if (userState is LoadedUserState) {
+    } else if (userState is LoggedInState) {
       if (userState.userEntity.verified) {
         Navigator.pushNamed(
           context,

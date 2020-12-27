@@ -22,7 +22,13 @@ import 'package:myclig/features/user/domain/usecases/get_user_usecase.dart';
 import 'package:myclig/features/user/domain/usecases/login_user_usecase.dart';
 import 'package:myclig/features/user/domain/usecases/register_or_update_user_usecase.dart';
 import 'package:myclig/features/user/domain/usecases/reset_password_usecase.dart';
-import 'package:myclig/features/user/presentation/bloc/user_bloc.dart';
+import 'package:myclig/features/user/presentation/bloc/login/login_bloc.dart';
+import 'package:myclig/features/user/presentation/bloc/login/login_state.dart';
+import 'package:myclig/features/user/presentation/bloc/reset_password/reset_password_bloc.dart';
+import 'package:myclig/features/user/presentation/bloc/reset_password/reset_password_state.dart';
+import 'package:myclig/features/user/presentation/bloc/user/create_account_bloc.dart';
+import 'package:myclig/features/user/presentation/bloc/user/user_bloc.dart';
+import 'package:myclig/features/user/presentation/bloc/user/verify_created_account_bloc.dart';
 import 'package:package_info/package_info.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -60,9 +66,33 @@ Future<void> initDi() async {
   sl.registerLazySingleton(
     () => UserBloc(
       getUser: sl(),
-      loginUser: sl(),
       registerOrUpdateUser: sl(),
+    ),
+  );
+
+  sl.registerLazySingleton(
+    () => LoginBloc(
+      initialState: InitialLoginState(),
+      loginUser: sl(),
+    ),
+  );
+
+  sl.registerLazySingleton(
+    () => CreateAccountBloc(
+      sl(),
+    ),
+  );
+
+  sl.registerLazySingleton(
+    () => ResetPasswordBloc(
+      initialState: InitialResetPasswordMailState(),
       resetPassword: sl(),
+    ),
+  );
+
+  sl.registerLazySingleton(
+    () => VerifyCreatedAccountBloc(
+      sl(),
     ),
   );
 

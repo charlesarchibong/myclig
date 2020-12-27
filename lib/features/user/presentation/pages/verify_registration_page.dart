@@ -11,9 +11,9 @@ import 'package:myclig/core/dependencies/injection_container.dart';
 import 'package:myclig/core/utils/flush_bar_notification.dart';
 import 'package:myclig/core/utils/phone_number_validator.dart';
 import 'package:myclig/features/user/domain/entities/user_entity.dart';
-import 'package:myclig/features/user/presentation/bloc/user_bloc.dart';
-import 'package:myclig/features/user/presentation/bloc/user_event.dart';
-import 'package:myclig/features/user/presentation/bloc/user_state.dart';
+import 'package:myclig/features/user/presentation/bloc/user/user_event.dart';
+import 'package:myclig/features/user/presentation/bloc/user/user_state.dart';
+import 'package:myclig/features/user/presentation/bloc/user/verify_created_account_bloc.dart';
 
 class VerifyRegistrationPage extends StatefulWidget {
   final UserEntity userEntity;
@@ -47,7 +47,7 @@ class _VerifyRegistrationPageState extends State<VerifyRegistrationPage> {
       child: Material(
         color: ColorConstant.PRIMARY_COLOR,
         child: SafeArea(
-          child: BlocConsumer<UserBloc, UserState>(
+          child: BlocConsumer<VerifyCreatedAccountBloc, UserState>(
               listener: (context, state) =>
                   _listenToRegistrationVerifyState(context, state),
               builder: (context, state) {
@@ -444,7 +444,7 @@ class _VerifyRegistrationPageState extends State<VerifyRegistrationPage> {
       username: _userNameController.text,
       referalCode: _referralController.text,
     );
-    sl<UserBloc>().add(
+    sl<VerifyCreatedAccountBloc>().add(
       RegisterOrUpdateUserEvent(userEntity: userEntity, file: _image),
     );
   }
