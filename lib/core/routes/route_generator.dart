@@ -6,6 +6,7 @@ import 'package:myclig/features/default/presentation/pages/splash_screen.dart';
 import 'package:myclig/features/user/presentation/pages/edit_profile_page.dart';
 import 'package:myclig/features/user/presentation/pages/forget_password_page.dart';
 import 'package:myclig/features/user/presentation/pages/login_page.dart';
+import 'package:myclig/features/user/presentation/pages/profile_page.dart';
 import 'package:myclig/features/user/presentation/pages/registration_page.dart';
 import 'package:myclig/features/user/presentation/pages/verify_registration_page.dart';
 
@@ -19,6 +20,10 @@ class RouteGenerator {
       case SPLASHSCREEN:
         return MaterialPageRoute(
           builder: (_) => SplashScreen(),
+        );
+      case PROFILE_SCREEN:
+        return MaterialPageRoute(
+          builder: (_) => ProfileScreen(),
         );
       case DASHBOARD_SCREEN:
         return MaterialPageRoute(

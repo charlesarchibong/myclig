@@ -6,3 +6,4 @@ const FORGET_PASSWORD_SCREEN = '/forget_password_screen';
 const EDIT_PROFILE_SCREEN = '/edit_profile_screen';
 const DASHBOARD_SCREEN = '/dashboard_screen';
 const SPLASHSCREEN = '/splashscreen';
+const PROFILE_SCREEN = '/profile_screen';

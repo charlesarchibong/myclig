@@ -118,6 +118,39 @@ class _ForgetPasswordPageState extends State<ForgetPasswordPage> {
                                       ),
                                     ),
                                   ),
+                                  SizedBox(height: 60.0),
+                                  InkWell(
+                                    onTap: () {
+                                      Navigator.pushNamed(
+                                        context,
+                                        LOGIN_SCREEN,
+                                      );
+                                    },
+                                    child: Container(
+                                      child: Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.center,
+                                        children: [
+                                          Text(
+                                            'Have account? ',
+                                            style: TextStyle(
+                                              fontSize: 15.0,
+                                              color: Colors.black87,
+                                            ),
+                                          ),
+                                          Text(
+                                            'Sign in',
+                                            style: TextStyle(
+                                              fontSize: 15.0,
+                                              fontWeight: FontWeight.bold,
+                                              color:
+                                                  ColorConstant.PRIMARY_COLOR,
+                                            ),
+                                          )
+                                        ],
+                                      ),
+                                    ),
+                                  ),
                                 ],
                               ),
                             ),
