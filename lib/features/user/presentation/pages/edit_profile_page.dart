@@ -4,6 +4,7 @@ import 'package:flushbar/flushbar_helper.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:image_cropper/image_cropper.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:myclig/core/constants/colors_constant.dart';
 import 'package:myclig/core/constants/image_assets_constnts.dart';
@@ -443,6 +444,53 @@ class _EditProfilePageState extends State<EditProfilePage> {
     }
   }
 
+  Future _cropImage(String path) async {
+    File croppedFile = await ImageCropper.cropImage(
+      sourcePath: path,
+      aspectRatioPresets: Platform.isAndroid
+          ? [
+              CropAspectRatioPreset.square,
+              CropAspectRatioPreset.ratio3x2,
+              CropAspectRatioPreset.original,
+              CropAspectRatioPreset.ratio4x3,
+              CropAspectRatioPreset.ratio16x9
+            ]
+          : [
+              CropAspectRatioPreset.original,
+              CropAspectRatioPreset.square,
+              CropAspectRatioPreset.ratio3x2,
+              CropAspectRatioPreset.ratio4x3,
+              CropAspectRatioPreset.ratio5x3,
+              CropAspectRatioPreset.ratio5x4,
+              CropAspectRatioPreset.ratio7x5,
+              CropAspectRatioPreset.ratio16x9
+            ],
+      androidUiSettings: AndroidUiSettings(
+        toolbarTitle: 'MyClig - Image Crop',
+        toolbarColor: Theme.of(context).primaryColor,
+        toolbarWidgetColor: Colors.white,
+        initAspectRatio: CropAspectRatioPreset.original,
+        lockAspectRatio: false,
+      ),
+      iosUiSettings: IOSUiSettings(
+        title: 'MyClig - Image Crop',
+      ),
+    );
+    if (croppedFile != null) {
+      setState(() {
+        _image = croppedFile;
+      });
+    } else {
+      FlushbarHelper.createError(
+        message: 'An error occured while trying to select a profile image',
+        title: 'Oops!!!',
+        duration: Duration(
+          seconds: 20,
+        ),
+      )..show(context);
+    }
+  }
+
   Future _imgFromGallery() async {
     try {
       final pickedFile = await picker.getImage(
@@ -461,14 +509,15 @@ class _EditProfilePageState extends State<EditProfilePage> {
       // }
       setState(() {
         if (pickedFile != null) {
-          _image = File(pickedFile.path);
+          // _image = File(pickedFile.path);
+          _cropImage(pickedFile.path);
         } else {
           print('No image selected.');
         }
       });
     } catch (e) {
       FlushbarHelper.createError(
-        message: 'An error occured while trying to select ID card',
+        message: 'An error occured while trying to select a profile image',
         title: 'Oops!!!',
         duration: Duration(
           seconds: 20,
@@ -495,7 +544,8 @@ class _EditProfilePageState extends State<EditProfilePage> {
       // }
       setState(() {
         if (pickedFile != null) {
-          _image = File(pickedFile.path);
+          // _image = File(pickedFile.path);
+          _cropImage(pickedFile.path);
         } else {
           print('No image selected.');
         }
